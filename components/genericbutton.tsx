@@ -1,8 +1,13 @@
 import { ReactNode } from "react";
 
-export default function IconButton({children}: {children: ReactNode}) {
+type ButtonProp = {
+    onClick: (e: React.MouseEvent) => {};
+    children: ReactNode;
+}
+
+export default function GenericButton({onClick, children}: ButtonProp) {
     return (
-        <div className="bg-none hover:bg-gray-300/50 p-1 rounded hover:scale-110 transition-all inline-block cursor-pointer active:scale-90">
+        <div onClick={onClick} className="bg-none p-0.5 contents prounded hover:scale-110 transition-all inline-block cursor-pointer active:scale-90">
             {children}
         </div>
     )
