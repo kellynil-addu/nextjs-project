@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import PlayerPane from "./playerpane";
+import NavPane from "./navpane";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,9 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-dvh flex flex-col`}
       >
-        {children}
+        <NavPane/>
+        <div className="bg-gray-50 flex-2">
+            {children}
+        </div>
+        <PlayerPane/>
       </body>
     </html>
   );
