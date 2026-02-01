@@ -1,31 +1,32 @@
-import GenericButton from "@/components/genericbutton";
-import IconButton from "@/components/iconbutton";
-import PanelSection from "@/components/panelsection";
-import { ReactNode } from "react";
+'use client';
+
+import CustomButton from "@/components/custombutton";
 
 export default function NavPane() {
     return (
-        <div className="bg-lime-100 h-14 text-zinc-900 flex-none flex items-stretch">
-            <PanelSection padding={6}>
-                <NavTab tab="Tab 1">Tab 1</NavTab>
-                <NavTab tab="Tab 2">Tab 2</NavTab>
-                <NavTab tab="Tab 3">Tab 3</NavTab>
-            </PanelSection>
+        <div className="bg-lime-100 h-12 text-zinc-900 flex-none flex items-center gap-2">
+            <NavTab ref="home">
+                Home
+            </NavTab>
+            <NavTab ref="explore">
+                Explore
+            </NavTab>
+            <NavTab ref="library">
+                My Library
+            </NavTab>
         </div>
     )
 }
 
-function NavTab({children, tab}: {tab: string, children: ReactNode}) {
-    function onClickTest(event: React.MouseEvent<Element>) {
-        alert(tab)
-        return {}
-    }
-    
+function NavTab({ref, children}: {ref: string, children: React.ReactNode;}) {
+
+    const onClickFunction = (e: React.MouseEvent) => {
+        alert(`You've selected ${ref}`);
+    };
+
     return (
-        <GenericButton onClick={onClickTest}>
-            <div className="h-full p-2 font-bold bg-lime-200 rounded text-lime-700">
-                {children}
-            </div>
-        </GenericButton>
+        <CustomButton scale onClick={onClickFunction}>
+            <div className="h-9 p-2 min-w-24 flex items-center justify-center bg-lime-200 rounded text-lime-700">{children}</div>
+        </CustomButton>
     )
 }

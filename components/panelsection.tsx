@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 type PanelSectionProps = {
-    padding: number;
+    padding?: number;
     children: ReactNode
 }
 
