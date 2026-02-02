@@ -1,6 +1,5 @@
 'use client';
 
-import { X } from "lucide-react";
 import { RefObject, useEffect, useRef, useState } from "react"
 
 // Converts seconds to mm:ss format
@@ -64,9 +63,9 @@ export default function SongSlider({audioElement}: {audioElement: RefObject<HTML
                 <img src="/albumplaceholder.jpg" className="aspect-square max-h-full" />
                 <div className="p-1 flex-col grow">
                     <div className="flex justify-between">
-                        <small>{toTime(percent * audioElement.current!.duration)}</small>
+                        <small>{toTime(percent * (audioElement.current?.duration ?? 0))}</small>
                         <small><b>Song title</b></small>
-                        <small>{toTime(audioElement.current!.duration)}</small>
+                        <small>{toTime(audioElement.current?.duration ?? 0)}</small>
                     </div>
                     <input ref={slider} min={0} max={1} step="any" value={percent} onChange={onChangeEvent} className="w-full" type="range"></input>
                 </div>
