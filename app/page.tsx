@@ -23,16 +23,12 @@ export default function Home() {
     audio?.current?.play();
   }
 
-  // useEffect(() => {
-  //   alert("sorry to disappoint you but the answer is " + audioExists(audio));
-  // }, []);
-
   return (
     <>
         <div className="p-12">
             <h1 className="text-4xl font-bold">Welcome</h1>
-            
-            <div className="bg-red-500" onClick={playIt}>Let's roll</div>
+
+                        
         </div>
     </>
   );
