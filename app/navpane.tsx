@@ -8,11 +8,11 @@ export default function NavPane() {
             <NavTab ref="home">
                 Home
             </NavTab>
-            <NavTab ref="explore">
-                Explore
-            </NavTab>
             <NavTab ref="library">
                 My Library
+            </NavTab>
+            <NavTab ref="search">
+                Search
             </NavTab>
         </div>
     )

@@ -54,7 +54,7 @@ export default function RootLayout({
                 preload="true"
                 loop
                 autoPlay
-                src="/audio/theclock.m4a"
+                src={undefined}
             ></audio>
 
             <NavPane/>

@@ -1,0 +1,41 @@
+{
+    "allaturca": {
+        "name": "Mozart: Sonata KV 331 – 3. Alla Turca",
+        "artist": "Markus Staab"
+    },
+
+    "handel": {
+        "name": "Handel - Largo from Xerxes",
+        "artist": "The London Baroque Orchestra"
+    },
+
+    "happyclappy": {
+        "name": "Happy Clappy",
+        "artist": "John Bartmann"
+    },
+
+    "haratanaya": {
+        "name": "Haratanaya Sree",
+        "artist": "Veena Kinhal"
+    },
+
+    "iallegro": {
+        "name": "Beethoven – Piano Sonata Nr.15 In D Major Op.28 Pastoral – I. Allegro",
+        "artist": "Karine Gilanyan"
+    },
+
+    "moltoallegro": {
+        "name": "Mozart: Symphony No. 40 In G Minor, K. 550 – I. Molto Allegro",
+        "artist": "Musopen Symphony"
+    },
+
+    "springfield": {
+        "name": "Spring Field",
+        "artist": "Hina"
+    },
+
+    "stardust": {
+        "name": "Stardust",
+        "artist": "JSH"
+    }
+}

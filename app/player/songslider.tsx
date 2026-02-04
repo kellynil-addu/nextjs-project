@@ -1,9 +1,11 @@
 'use client';
 
+import useAudioController from "@/components/audiocontroller";
 import { RefObject, useEffect, useRef, useState } from "react"
 
 // Converts seconds to mm:ss format
 function toTime(seconds: number) {
+    if (!seconds) return "00:00:00";
     return new Date(seconds * 1000).toISOString().slice(11, 19);
 }
 
@@ -11,6 +13,8 @@ export default function SongSlider({audioElement}: {audioElement: RefObject<HTML
     const slider = useRef<HTMLInputElement>(null);
     const [percent, setPercent] = useState(0);
     const [playing, setPlaying] = useState(true);
+
+    const audioController = useAudioController(audioElement);
 
     const onChangeEvent = () => {
         const audioe = audioElement.current;
@@ -26,20 +30,6 @@ export default function SongSlider({audioElement}: {audioElement: RefObject<HTML
         }
     }
     
-    // Custom state setup
-    useEffect(() => {
-        const onAudioPlay = () => setPlaying(true);
-        const onAudioPause = () => setPlaying(false);
-
-        audioElement.current?.addEventListener("play", onAudioPlay);
-        audioElement.current?.addEventListener("pause", onAudioPause);
-        
-        return () => {
-            audioElement.current?.removeEventListener("play", onAudioPlay);
-            audioElement.current?.removeEventListener("pause", onAudioPause);            
-        }
-    }, [])
-
     // Listen to audio state
     useEffect(() => {
         if (playing) {
@@ -64,7 +54,7 @@ export default function SongSlider({audioElement}: {audioElement: RefObject<HTML
                 <div className="p-1 flex-col grow">
                     <div className="flex justify-between">
                         <small>{toTime(percent * (audioElement.current?.duration ?? 0))}</small>
-                        <small><b>Song title</b></small>
+                        <small><b>{}</b></small>
                         <small>{toTime(audioElement.current?.duration ?? 0)}</small>
                     </div>
                     <input ref={slider} min={0} max={1} step="any" value={percent} onChange={onChangeEvent} className="w-full" type="range"></input>
