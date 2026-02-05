@@ -1,13 +1,11 @@
 'use client';
 
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import PlayerPane from "./playerpane";
 import NavPane from "./navpane";
-import { ReactNode, Ref, RefObject, useRef } from "react";
-import { createContext } from "vm";
+import { RefObject, useRef } from "react";
 import AudioProvider from "@/components/audiocontext";
 
 const geistSans = Geist({
@@ -58,12 +56,12 @@ export default function RootLayout({
             ></audio>
 
             <NavPane/>
-            <div className="bg-gray-50 flex-2">
-                <AudioProvider audio={audioElement}>
-                    {children}  
-                </AudioProvider>
-            </div>
-            <PlayerPane audioElement={audioElement}/>
+            <AudioProvider audio={audioElement}>
+                <div className="bg-gray-50 flex-2">
+                        {children}  
+                </div>
+                <PlayerPane/>
+            </AudioProvider>
 
         </body>
     </html>

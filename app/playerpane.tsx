@@ -2,55 +2,35 @@ import CustomButton from '@/components/custombutton';
 import PanelSection from '@/components/panelsection';
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import MusicSlider from './player/musicslider';
-import { RefObject, useEffect, useState } from 'react';
-import useAudioController from '@/components/audiocontroller';
+import { RefObject, useContext, useEffect, useState } from 'react';
+import { AudioContext } from '@/components/audiocontext';
 
-export default function PlayerPane({audioElement}: {audioElement: RefObject<HTMLAudioElement | null>}) {
-    const [paused, setPaused] = useState(true);
+export default function PlayerPane() {
     
-    const audio = useAudioController(audioElement);
-
-    const onClickToggleSong = () => {
-        if (!audioElement.current) {
-            alert("Does not exist");
-            return;
-        }
-
-        if (audioElement.current.paused == false) {
-            audioElement.current.pause()
-        } else {
-            audioElement.current.play()
-        }
-    };
-
-    useEffect(() => {
-        const onPlay = () => setPaused(false);
-        const onPause = () => setPaused(true);
-
-        audioElement.current?.addEventListener("play", onPlay);
-        audioElement.current?.addEventListener("pause", onPause);
-        
-        return (() => {
-            audioElement.current?.removeEventListener("play", onPlay);
-            audioElement.current?.removeEventListener("pause", onPause);
-        })
-    }, [])
+    const audio = useContext(AudioContext);
 
     const onClickPlaceholder = () => {
         alert("This button click event is not yet implemented.");
     }
 
-    return (
-        <div className="bg-zinc-100 border-t box-content border-t-slate-400 h-16 text-zinc-900 flex-none flex items-stretch">
-            <PanelSection padding={12}>
-                <CustomButton scale highlight onClick={onClickToggleSong}> {audio.playing ? (<Pause/>) : (<Play/>)} </CustomButton>
-                <CustomButton scale highlight onClick={onClickPlaceholder}> <SkipBack/> </CustomButton>
-                <CustomButton scale highlight onClick={onClickPlaceholder}> <SkipForward/> </CustomButton>
-            </PanelSection>
+    const onClickPrevious = () => {
+        const audioElement = audio?.getReference();
+        audioElement?.fastSeek(0);
+    }
 
-            <PanelSection padding={8}>
-                <MusicSlider audioElement={audioElement}></MusicSlider>
-            </PanelSection>
+    return (
+        <div className="bg-zinc-100 border-t box-content border-t-slate-400 h-16 text-zinc-900 flex-none flex justify-center">
+            <div className="w-full h-full max-w-6xl flex items-stretch">
+                <PanelSection padding={12}>
+                    <CustomButton scale highlight onClick={() => audio?.toggle()}> {audio?.playing ? (<Pause/>) : (<Play/>)} </CustomButton>
+                    <CustomButton scale highlight onClick={onClickPrevious}> <SkipBack/> </CustomButton>
+                    <CustomButton scale highlight onClick={onClickPlaceholder}> <SkipForward/> </CustomButton>
+                </PanelSection>
+
+                <PanelSection padding={8}>
+                    <MusicSlider></MusicSlider>
+                </PanelSection>
+            </div>
         </div>
     )
 }

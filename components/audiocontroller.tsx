@@ -3,8 +3,8 @@ import { RefObject, useEffect, useState } from "react";
 export default function useAudioController(audioel: RefObject<HTMLAudioElement | null>) {
     
     const [playing, setPlaying] = useState(false);
-
-    const [curSongId, setCurSongId] = useState<String>();
+    const [curSongId, setCurSongId] = useState<string>();
+    const [curSongLength, setCurSongLength] = useState(0);
 
     useEffect(() => {
         const audio = audioel.current!;
@@ -25,25 +25,35 @@ export default function useAudioController(audioel: RefObject<HTMLAudioElement |
     useEffect(() => {
         if (curSongId) {
             audioel.current!.src = "/audio/" + curSongId + ".mp3";
-            audioel.current?.play();
+            audioel.current?.play().then(() => {
+                setCurSongLength(audioel.current?.duration ?? 0);
+            });
         }
     }, [curSongId]);
 
-    return {
-        playing: playing,
+    function getReference() {
+        return audioel.current!;
+    }
 
-        curSongId: curSongId,
-
-        toggle() {
-            if (audioel.current?.paused) {
-                audioel.current.play();
-            } else {
-                audioel.current?.pause();
-            }
-        },
-
-        playNewSong(id: string) {
-            setCurSongId(id);
+    function toggle() {
+        // Plays or pauses the audio.
+        if (audioel.current?.paused) {
+            audioel.current.play();
+        } else {
+            audioel.current?.pause();
         }
+    }
+
+    function playNewSong(id: string) {
+        setCurSongId(id);
+    }
+
+    return {
+        playing,
+        curSongId,
+        curSongLength,
+        getReference,
+        toggle,
+        playNewSong
     }
 }
