@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { AudioContext, AudioRef } from "@/components/audiocontext";
 import { useContext, useEffect, useState } from "react";
-import useAudioController from "@/components/audiocontroller";
 import MusicCard from "@/components/musiccard";
-import { List } from "lucide-react";
+import backgroundImage from "@/public/background.jpg"
 
 const musicList = require("@/app/musiclist.json");
 
@@ -27,7 +26,8 @@ export default function Home() {
 
   return (
     <>
-        <div className="flex flex-col gap-6 p-12">
+        <div className="flex flex-col gap-6 p-12 relative bg-[url('/background.jpg')] h-full">
+
             <h1 className="text-4xl font-bold">Welcome</h1>
 
             <div className="flex flex-wrap gap-4">
