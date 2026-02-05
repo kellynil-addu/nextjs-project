@@ -19,9 +19,7 @@ function listCards() {
 
 export default function Home() {
 
-  const audioContext = useContext<AudioRef>(AudioContext);
-
-  const audio = useAudioController(audioContext!);
+  const audio = useContext(AudioContext);
 
   useEffect(() => {
 

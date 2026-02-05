@@ -4,6 +4,8 @@ export default function useAudioController(audioel: RefObject<HTMLAudioElement |
     
     const [playing, setPlaying] = useState(false);
 
+    const [curSongId, setCurSongId] = useState<String>();
+
     useEffect(() => {
         const audio = audioel.current!;
         const onPlay = () => {setPlaying(true)};
@@ -20,8 +22,17 @@ export default function useAudioController(audioel: RefObject<HTMLAudioElement |
         };
     }, [])
 
+    useEffect(() => {
+        if (curSongId) {
+            audioel.current!.src = "/audio/" + curSongId + ".mp3";
+            audioel.current?.play();
+        }
+    }, [curSongId]);
+
     return {
         playing: playing,
+
+        curSongId: curSongId,
 
         toggle() {
             if (audioel.current?.paused) {
@@ -31,9 +42,8 @@ export default function useAudioController(audioel: RefObject<HTMLAudioElement |
             }
         },
 
-        playNewSong(file: string) {
-            audioel.current?.setAttribute("src", file);
-            this.toggle();
+        playNewSong(id: string) {
+            setCurSongId(id);
         }
     }
 }

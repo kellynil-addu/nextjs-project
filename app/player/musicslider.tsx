@@ -9,12 +9,12 @@ function toTime(seconds: number) {
     return new Date(seconds * 1000).toISOString().slice(11, 19);
 }
 
-export default function SongSlider({audioElement}: {audioElement: RefObject<HTMLAudioElement | null>}) {
+export default function MusicSlider({audioElement}: {audioElement: RefObject<HTMLAudioElement | null>}) {
     const slider = useRef<HTMLInputElement>(null);
     const [percent, setPercent] = useState(0);
     const [playing, setPlaying] = useState(true);
 
-    const audioController = useAudioController(audioElement);
+    // const audioController = useAudioController(audioElement);
 
     const onChangeEvent = () => {
         const audioe = audioElement.current;
@@ -57,7 +57,7 @@ export default function SongSlider({audioElement}: {audioElement: RefObject<HTML
                         <small><b>{}</b></small>
                         <small>{toTime(audioElement.current?.duration ?? 0)}</small>
                     </div>
-                    <input ref={slider} min={0} max={1} step="any" value={percent} onChange={onChangeEvent} className="w-full" type="range"></input>
+                    <input ref={slider} min={0} max={1} step="any" value={percent ?? 0} onChange={onChangeEvent} className="w-full" type="range"></input>
                 </div>
             </div>
         </div>

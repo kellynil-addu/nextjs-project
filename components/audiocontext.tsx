@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, RefObject, createContext, useRef } from "react";
+import useAudioController from "./audiocontroller";
 
 export type AudioRef = RefObject<HTMLAudioElement | null> | null
 
@@ -9,12 +10,11 @@ type MusicContextProps = {
 	audio: RefObject<HTMLAudioElement | null>;
 }
 
-// FIXME: ??????
-export const AudioContext = createContext<AudioRef>(null);
+export const AudioContext = createContext<ReturnType<typeof useAudioController> | undefined>(undefined);
 
 export default function AudioProvider({children, audio}: MusicContextProps) {
 	return (
-		<AudioContext.Provider value={audio}>
+		<AudioContext.Provider value={useAudioController(audio)}>
 			{children}
 		</AudioContext.Provider>
 	);

@@ -1,7 +1,7 @@
 import CustomButton from '@/components/custombutton';
 import PanelSection from '@/components/panelsection';
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
-import SongSlider from './player/songslider';
+import MusicSlider from './player/musicslider';
 import { RefObject, useEffect, useState } from 'react';
 import useAudioController from '@/components/audiocontroller';
 
@@ -49,7 +49,7 @@ export default function PlayerPane({audioElement}: {audioElement: RefObject<HTML
             </PanelSection>
 
             <PanelSection padding={8}>
-                <SongSlider audioElement={audioElement}></SongSlider>
+                <MusicSlider audioElement={audioElement}></MusicSlider>
             </PanelSection>
         </div>
     )
