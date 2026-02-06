@@ -56,7 +56,7 @@ export default function MusicSlider() {
     return (
         <div className="h-full w-full bg-zinc-300 rounded-md overflow-hidden shrink">
             <div className="flex h-full">
-                <img src="/albumplaceholder.jpg" className="aspect-square max-h-full" />
+                <img src="/covers/_placeholder.jpg" className="aspect-square max-h-full" />
                 <div className="p-1 flex-col grow">
                     <div className="flex justify-between">
                         <small className="w-16">

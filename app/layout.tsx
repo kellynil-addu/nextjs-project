@@ -57,7 +57,7 @@ export default function RootLayout({
 
             <NavPane/>
             <AudioProvider audio={audioElement}>
-                <div className="bg-gray-50 flex-2">
+                <div className="bg-gray-50 flex-2 overflow-scroll">
                         {children}  
                 </div>
                 <PlayerPane/>

@@ -1,39 +1,19 @@
 "use client";
 
-import Image from "next/image";
-import { AudioContext, AudioRef } from "@/components/audiocontext";
-import { useContext, useEffect, useState } from "react";
 import MusicCard from "@/components/musiccard";
-import backgroundImage from "@/public/background.jpg"
-
-const musicList = require("@/app/musiclist.json");
-
-function listCards() {
-    return Object.keys(musicList).map((key) => {
-        (
-            <MusicCard musicid={key}></MusicCard>
-        )
-    })
-}
+import { listAllMusicIds } from "./musicstore";
 
 export default function Home() {
 
-  const audio = useContext(AudioContext);
-
-  useEffect(() => {
-
-  }, [])
-
   return (
     <>
-        <div className="flex flex-col gap-6 p-12 relative bg-[url('/background.jpg')] h-full">
+        <div className="flex flex-col gap-6 p-12 relative bg-[url('/background.jpg')]">
 
             <h1 className="text-4xl font-bold">Welcome</h1>
 
             <div className="flex flex-wrap gap-4">
-                {/* <MusicCard musicid="allaturca"></MusicCard> */}
                 {
-                    Object.keys(musicList).map(key => (
+                    listAllMusicIds().map(key => (
                         (<MusicCard key={key} musicid={key}></MusicCard>)
                     ))
                 }

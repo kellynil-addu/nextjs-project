@@ -2,7 +2,7 @@ import CustomButton from '@/components/custombutton';
 import PanelSection from '@/components/panelsection';
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import MusicSlider from './player/musicslider';
-import { RefObject, useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AudioContext } from '@/components/audiocontext';
 
 export default function PlayerPane() {
@@ -19,7 +19,7 @@ export default function PlayerPane() {
     }
 
     return (
-        <div className="bg-zinc-100 border-t box-content border-t-slate-400 h-16 text-zinc-900 flex-none flex justify-center">
+        <div className=" bg-zinc-100 border-t box-content border-t-slate-400 h-16 text-zinc-900 flex-none flex justify-center">
             <div className="w-full h-full max-w-6xl flex items-stretch">
                 <PanelSection padding={12}>
                     <CustomButton scale highlight onClick={() => audio?.toggle()}> {audio?.playing ? (<Pause/>) : (<Play/>)} </CustomButton>
