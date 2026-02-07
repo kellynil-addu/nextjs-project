@@ -69,7 +69,7 @@ export default function MusicSlider() {
                             {toTime(audio?.curSongLength ?? 0)}
                         </small>
                     </div>
-                    <input ref={slider} min={0} max={1} step="any" value={percent ?? 0} onChange={onMoveSlider} className="w-full" type="range"></input>
+                    <input ref={slider} min={0} max={1} step="any" value={percent || 0} onChange={onMoveSlider} className="w-full" type="range"></input>
                 </div>
             </div>
         </div>
