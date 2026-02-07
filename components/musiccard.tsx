@@ -4,11 +4,10 @@ import { AudioContext, AudioRef } from "./audiocontext";
 import { getMusicData } from "@/app/musicstore";
 import Image from "next/image";
 import { Heart, Pause, Play, PlusCircle } from "lucide-react";
+import SongCover from "./songcover";
 
 // Component for the Music card, displaying the summary details of a song.
 export default function MusicCard({musicid}: {musicid: string}) {
-    
-    
     const controller = useContext(AudioContext); 
     const musicData = getMusicData(musicid);
     
@@ -39,11 +38,11 @@ export default function MusicCard({musicid}: {musicid: string}) {
     function ToggleButton({className}: {className?: string} ) {
         return (
             <CustomButton className={className} scale >
-                <div className="bg-gray-300 p-1 w-16 h-16 rounded-full flex justify-center items-center">
+                <div className="bg-gray-300/90 p-1 w-16 h-16 rounded-full flex justify-center items-center">
                     {
                         (controller?.playing && controller.curSongId == musicid)
-                        ? (<Pause/>)
-                        : (<Play/>)
+                        ? (<Pause size={32} fill="black"/>)
+                        : (<Play size={32} fill="black"/>)
                     }
                 </div>
             </CustomButton>
@@ -59,7 +58,7 @@ export default function MusicCard({musicid}: {musicid: string}) {
             <div onClick={onPlay} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`bg-gray-200 overflow-hidden cursor-pointer rounded-2xl absolute shadow-md flex flex-col transition-[height,max-height] ${mouseIn ? "h-72" : "h-64"}`}> 
                 {/* This div is the actual gray base that can get over the actual occupied space. (Happens when the card is hovered over) */}
                 <div className="w-48 h-48 relative">
-                    <SongCover className="absolute" musicid={musicid}></SongCover>
+                    <SongCover className="absolute" musicid={musicid} width={192} height={192}></SongCover>
                     <div className={`${fadeFx(mouseIn)} absolute w-full h-full flex justify-center items-center`}>
                         <ToggleButton></ToggleButton>   
                     </div>
@@ -82,27 +81,5 @@ export default function MusicCard({musicid}: {musicid: string}) {
                 </div>
             </div>
         </div>
-    )
-}
-
-
-
-function SongCover({musicid, className}: {musicid: string, className?: string}) {
-    // Returns an image with the appropriate song cover based on the given musicid.
-    // If the song data does not exist, replace with a placeholder.
-
-    const musicData = getMusicData(musicid);
-    const [failed, setFailed] = useState(false);
-    const [src, setSrc] = useState(`/covers/${musicData["id"]}.jpg`);
-
-    const onError = () => {
-        if (!failed) {
-            setSrc("/covers/_placeholder.jpg")
-            setFailed(true);
-        }
-    }
-
-    return (
-        <Image className={className} src={src} alt={`Cover of ${musicData["name"]}`} onError={onError} width={192} height={192}></Image>
     )
 }

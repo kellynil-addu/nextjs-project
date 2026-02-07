@@ -1,10 +1,15 @@
 {
+    "_notfound": {
+        "name": "Song not found",
+        "artist": "Artist"
+    },
+
     "allaturca": {
         "name": "Mozart: Sonata KV 331 – 3. Alla Turca",
         "artist": "Markus Staab"
     },
 
-    "handel": {
+    "largo": {
         "name": "Handel - Largo from Xerxes",
         "artist": "The London Baroque Orchestra"
     },
@@ -37,5 +42,14 @@
     "stardust": {
         "name": "Stardust",
         "artist": "JSH"
-    }
+    },
+
+    "mozart-ekn": {"name": "Mozart - Eine Kleine Nachtmusik allegro", "artist": "Advent Chamber Orchestra"},
+    "chills": {"name": "Chills", "artist": "Holizna"},
+    "ronin": {"name": "Ronin", "artist": "EXETEXE"},
+    "makingclouds": {"name": "Making Clouds", "artist": "JMHBM"},
+    "tosuccess": {"name": "Driven To Success", "artist": "Scott Holmes Music"},
+    "allthewayup": {"name": "All The Way Up", "artist": "eddy"},
+    "gymnopedie": {"name": "Erik Satie - Gymnopédie No.1", "artist": "Kevin MacLeod"},
+    "somethingelated": {"name": "Something Elated", "artist": "Broke For Free"}
 }

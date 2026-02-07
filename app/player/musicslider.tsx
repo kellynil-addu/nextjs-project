@@ -3,6 +3,8 @@
 import { AudioContext } from "@/components/audiocontext";
 import { useContext, useEffect, useRef, useState } from "react"
 import { getMusicData } from "../musicstore";
+import Image from "next/image";
+import SongCover from "@/components/songcover";
 
 // Converts seconds to mm:ss format
 function toTime(seconds: number) {
@@ -38,7 +40,15 @@ export default function MusicSlider() {
         }
     }
 
-    // Listen to audio state
+    const getArtist = (songid?: string) => {
+        if (songid) {
+            return "by " + getMusicData(songid)["artist"];
+        } else {
+            return "";
+        }
+    }
+
+    // Listen to audio state whether it started or paused
     useEffect(() => {
         if (audio?.playing) {
             const audioElement = audio?.getReference();
@@ -56,19 +66,22 @@ export default function MusicSlider() {
     return (
         <div className="h-full w-full bg-zinc-300 rounded-md overflow-hidden shrink">
             <div className="flex h-full">
-                <img src="/covers/_placeholder.jpg" className="aspect-square max-h-full" />
+                <SongCover musicid={audio?.curSongId} width={48} height={48} ></SongCover>
                 <div className="p-1 flex-col grow">
+                    {/* Duration, title, artist */}
                     <div className="flex justify-between">
                         <small className="w-16">
                             {toTime(percent * (audio?.curSongLength ?? 0))}
                         </small>
                         <small className="text-ellipsis text-center whitespace-nowrap overflow-hidden grow shrink w-0">
-                            <b>{getMusicTitle(audio?.curSongId)}</b>
+                            <b>{getMusicTitle(audio?.curSongId)}</b> <i>{getArtist(audio?.curSongId)}</i>
                         </small>
                         <small className="w-16 text-right">
                             {toTime(audio?.curSongLength ?? 0)}
                         </small>
                     </div>
+
+                    {/* Slider */}
                     <input ref={slider} min={0} max={1} step="any" value={percent || 0} onChange={onMoveSlider} className="w-full" type="range"></input>
                 </div>
             </div>

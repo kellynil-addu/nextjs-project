@@ -27,7 +27,7 @@ export default function PlayerPane() {
                     <CustomButton scale highlight onClick={onClickPlaceholder}> <SkipForward/> </CustomButton>
                 </PanelSection>
 
-                <PanelSection padding={8}>
+                <PanelSection className="grow" padding={8}>
                     <MusicSlider></MusicSlider>
                 </PanelSection>
             </div>
