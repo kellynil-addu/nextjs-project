@@ -16,6 +16,11 @@ export default function SongCover({musicid = "", className, width, height}: {mus
         }
     }
 
+    useEffect(() => {
+        setSrc(`/covers/${musicData["id"]}.webp`);
+        console.log(`/covers/${musicData["id"]}.webp`)
+    }, [musicid])
+
     return (
         <Image className={className} src={src} alt={`Cover of ${musicData["name"]}`} onError={onError} width={width} height={height}></Image>
     )
