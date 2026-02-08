@@ -7,7 +7,11 @@ export function getMusicData(songid: string) {
 
     // Return a not found object instead
     if (!object) {
-        return getMusicData("_notfound");
+        return {
+            id: "",
+            name: "",
+            song: "Song"
+        }
     }
 
     object["id"] = songid;
