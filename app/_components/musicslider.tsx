@@ -2,8 +2,7 @@
 
 import { AudioContext } from "@/components/audiocontext";
 import { useContext, useEffect, useRef, useState } from "react"
-import { getMusicData } from "../musicstore";
-import Image from "next/image";
+import { getMusicData } from "./musicstore";
 import SongCover from "@/components/songcover";
 
 // Converts seconds to mm:ss format

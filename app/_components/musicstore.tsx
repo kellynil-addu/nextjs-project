@@ -1,4 +1,4 @@
-const musiclist = require("@/app/musiclist.json")
+const musiclist = require("@/app/_components/musiclist.json")
 
 const keys = Object.keys(musiclist);
 

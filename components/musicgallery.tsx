@@ -1,8 +1,9 @@
 "use client";
 
-import { listAllMusicIds } from "@/app/musicstore";
+import { listAllMusicIds } from "@/app/_components/musicstore";
 import MusicCard from "@/components/musiccard";
 
+// Loads MusicCard's into view.
 export default function MusicGrid() {
 
   return (
