@@ -4,6 +4,7 @@ import { listAllMusicIds } from "@/app/_components/musicstore";
 import MusicCard from "@/src/components/musiccard";
 
 // Loads MusicCard's into view.
+// Loads MusicCard's into view.
 export default function MusicGrid() {
 
   return (
