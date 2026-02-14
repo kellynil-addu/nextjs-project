@@ -1,9 +1,9 @@
-import CustomButton from '@/components/custombutton';
-import PanelSection from '@/components/panelsection';
+import CustomButton from '@/src/components/custombutton';
+import PanelSection from '@/src/components/panelsection';
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
-import MusicSlider from './player/musicslider';
+import MusicSlider from './musicslider';
 import { useContext } from 'react';
-import { AudioContext } from '@/components/audiocontext';
+import { AudioContext } from '@/src/components/audiocontext';
 
 export default function PlayerPane() {
     

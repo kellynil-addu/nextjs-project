@@ -1,10 +1,9 @@
 'use client';
 
-import { AudioContext } from "@/components/audiocontext";
+import { AudioContext } from "@/src/components/audiocontext";
 import { useContext, useEffect, useRef, useState } from "react"
-import { getMusicData } from "../musicstore";
-import Image from "next/image";
-import SongCover from "@/components/songcover";
+import { getMusicData } from "./musicstore";
+import SongCover from "@/src/components/songcover";
 
 // Converts seconds to mm:ss format
 function toTime(seconds: number) {

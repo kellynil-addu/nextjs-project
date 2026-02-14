@@ -1,7 +1,7 @@
 "use client";
 
-import MusicCard from "@/components/musiccard";
-import { listAllMusicIds } from "./musicstore";
+import MusicCard from "@/src/components/musiccard";
+import { listAllMusicIds } from "./_components/musicstore";
 import Link from "next/link";
 
 export default function Home() {

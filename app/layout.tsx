@@ -3,10 +3,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import PlayerPane from "./playerpane";
-import NavPane from "./navpane";
+import PlayerPane from "./_components/playerpane";
+import NavPane from "./_components/navpane";
 import { RefObject, useRef } from "react";
-import AudioProvider from "@/components/audiocontext";
+import AudioProvider from "@/src/components/audiocontext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

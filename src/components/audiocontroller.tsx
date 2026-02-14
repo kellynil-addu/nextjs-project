@@ -1,5 +1,6 @@
 import { RefObject, useEffect, useState } from "react";
 
+// Outputs a controller. It can be shared by different 
 export default function useAudioController(audioel: RefObject<HTMLAudioElement | null>) {
     
     const [playing, setPlaying] = useState(false);

@@ -1,4 +1,4 @@
-import { getMusicData } from "@/app/musicstore";
+import { getMusicData } from "@/app/_components/musicstore";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 

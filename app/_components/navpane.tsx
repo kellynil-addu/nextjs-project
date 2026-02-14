@@ -1,6 +1,6 @@
 'use client';
 
-import CustomButton from "@/components/custombutton";
+import CustomButton from "@/src/components/custombutton";
 import Link from "next/link";
 
 export default function NavPane() {

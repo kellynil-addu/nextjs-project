@@ -1,8 +1,7 @@
 import { MouseEvent, useContext, useRef, useState } from "react";
 import CustomButton from "./custombutton";
-import { AudioContext, AudioRef } from "./audiocontext";
-import { getMusicData } from "@/app/musicstore";
-import Image from "next/image";
+import { AudioContext } from "./audiocontext";
+import { getMusicData } from "@/app/_components/musicstore";
 import { Heart, Pause, Play, PlusCircle } from "lucide-react";
 import SongCover from "./songcover";
 
