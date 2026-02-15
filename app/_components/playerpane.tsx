@@ -1,21 +1,23 @@
 import CustomButton from '@/src/components/custombutton';
 import PanelSection from '@/src/components/panelsection';
-import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
+import { List, LucideRepeat2, Pause, Play, Repeat2, SkipBack, SkipForward } from 'lucide-react';
 import MusicSlider from './musicslider';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AudioContext } from '@/src/components/audiocontext';
+import QueueMenu from './queuemenu';
 
 export default function PlayerPane() {
     
     const audio = useContext(AudioContext);
 
-    const onClickPlaceholder = () => {
-        alert("This button click event is not yet implemented.");
-    }
-
     const onClickPrevious = () => {
         const audioElement = audio?.getReference();
+
         audioElement?.fastSeek(0);
+    }
+
+    const onClickSkip = () => {
+        audio?.skipSong();
     }
 
     return (
@@ -24,14 +26,33 @@ export default function PlayerPane() {
                 <PanelSection padding={12}>
                     <CustomButton scale highlight onClick={() => audio?.toggle()}> {audio?.playing ? (<Pause/>) : (<Play/>)} </CustomButton>
                     <CustomButton scale highlight onClick={onClickPrevious}> <SkipBack/> </CustomButton>
-                    <CustomButton scale highlight onClick={onClickPlaceholder}> <SkipForward/> </CustomButton>
+                    <CustomButton scale highlight onClick={onClickSkip}> <SkipForward/> </CustomButton>
                 </PanelSection>
 
                 <PanelSection className="grow" padding={8}>
                     <MusicSlider></MusicSlider>
                 </PanelSection>
+
+                <PanelSection padding={12}>
+                    <CustomButton scale highlight active={audio?.isLoop} onClick={audio?.toggleLoop}> <Repeat2/> </CustomButton>
+                    <PopupQueueButton></PopupQueueButton>
+                </PanelSection>
             </div>
         </div>
+    )
+}
+
+function PopupQueueButton() {
+    const [shown, setShown] = useState(false);
+
+    return (
+        // TODO: Refactor "active" style
+        <PanelSection className={`relative rounde padding={0}`}>
+            <CustomButton scale highlight active={shown} onClick={() => setShown(!shown)}>
+                <List className={`${shown ? "text-emerald-800" : ""}`}/>
+            </CustomButton>
+            { shown ? (<QueueMenu></QueueMenu>) : null }
+        </PanelSection>
     )
 }
 

@@ -50,8 +50,6 @@ export default function RootLayout({
             <audio
                 ref={audioElement}
                 preload="true"
-                loop
-                autoPlay
                 src={undefined}
             ></audio>
 

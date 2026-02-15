@@ -2,49 +2,57 @@
 
     "allaturca": {
         "name": "Mozart: Sonata KV 331 – 3. Alla Turca",
-        "artist": "Markus Staab"
+        "artist": "Markus Staab",
+        "tags": ["classical"]
     },
 
     "largo": {
         "name": "Handel - Largo from Xerxes",
-        "artist": "The London Baroque Orchestra"
+        "artist": "The London Baroque Orchestra",
+        "tags": ["classical"]
     },
 
     "happyclappy": {
         "name": "Happy Clappy",
-        "artist": "John Bartmann"
+        "artist": "John Bartmann",
+        "tags": ["happy"]
     },
 
     "haratanaya": {
         "name": "Haratanaya Sree",
-        "artist": "Veena Kinhal"
+        "artist": "Veena Kinhal",
+        "tags": ["international"]
     },
 
     "pastoral": {
         "name": "Beethoven – Piano Sonata Nr.15 In D Major Op.28 Pastoral – I. Allegro",
-        "artist": "Karine Gilanyan"
+        "artist": "Karine Gilanyan",
+        "tags": ["classical"]
     },
 
     "symphony40": {
         "name": "Mozart: Symphony No. 40 In G Minor, K. 550 – I. Molto Allegro",
-        "artist": "Musopen Symphony"
+        "artist": "Musopen Symphony",
+        "tags": ["classical"]
     },
 
     "springfield": {
         "name": "Spring Field",
-        "artist": "Hina"
+        "artist": "Hina",
+        "tags": ["happy"]
     },
 
     "stardust": {
         "name": "Stardust",
-        "artist": "JSH"
+        "artist": "JSH",
+        "tags": ["electronic", "jazz"]
     },
 
-    "chills": {"name": "Chills", "artist": "Holizna"},
-    "ronin": {"name": "Ronin", "artist": "EXETEXE"},
-    "makingclouds": {"name": "Making Clouds", "artist": "JMHBM"},
-    "tosuccess": {"name": "Driven To Success", "artist": "Scott Holmes Music"},
-    "allthewayup": {"name": "All The Way Up", "artist": "eddy"},
-    "gymnopedie": {"name": "Erik Satie - Gymnopédie No.1", "artist": "Kevin MacLeod"},
-    "somethingelated": {"name": "Something Elated", "artist": "Broke For Free"}
+    "chills": {"name": "Chills", "artist": "Holizna", "tags": ["blues", "jazz", "relax"]},
+    "ronin": {"name": "Ronin", "artist": "EXETEXE", "tags": ["electronic"]},
+    "makingclouds": {"name": "Making Clouds", "artist": "JMHBM", "tags": ["electronic"]},
+    "tosuccess": {"name": "Driven To Success", "artist": "Scott Holmes Music", "tags": ["electronic"]},
+    "allthewayup": {"name": "All The Way Up", "artist": "eddy", "tags": ["rock"]},
+    "gymnopedie": {"name": "Erik Satie - Gymnopédie No.1", "artist": "Kevin MacLeod", "tags": ["classical", "relax"]},
+    "somethingelated": {"name": "Something Elated", "artist": "Broke For Free", "tags": ["electronic", "hip-hop"]}
 }

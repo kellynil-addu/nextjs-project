@@ -14,7 +14,7 @@ export default function MusicCard({musicid}: {musicid: string}) {
 
     const onPlay = () => {
         if (controller?.curSongId !== musicid) {
-            controller?.playNewSong(musicid);
+            controller?.playNow(musicid);
         } else {
             controller.toggle();
         }
@@ -25,7 +25,7 @@ export default function MusicCard({musicid}: {musicid: string}) {
     }
     const onEnqueue = (e: MouseEvent) => {
         e.stopPropagation();
-        alert("Queue not implemented yet")
+        controller?.enqueueSong(musicid);
     }
     const onMouseEnter = () => setMouseIn(true);
     const onMouseLeave = () => setMouseIn(false);
